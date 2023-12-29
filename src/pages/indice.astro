@@ -1,0 +1,50 @@
+---
+import EmptyLayout from "../layouts/EmptyLayout.astro";
+// Componente IndiceDiapositivas.astro
+const diapositivas = [
+    "Introducción a Astro",
+    "Arquitectura de Astro",
+    "Componentes en Astro",
+    "Optimización de Rendimiento",
+    "SEO y Astro",
+    "Casos de Uso y Estudios de Caso",
+    "Recursos y Comunidad"
+];
+---
+
+<EmptyLayout>
+  <div class="diapositiva">
+    <h2>Índice de Diapositivas</h2>
+    <ol>
+        {diapositivas.map((diapositiva) => (
+            <li>{diapositiva}</li>
+        ))}
+    </ol>
+  </div>
+</EmptyLayout>
+
+
+<style>
+    .diapositiva {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+        background-color: #f8f8f8;
+        color: #333;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    h2 {
+        margin-bottom: 20px;
+    }
+    ol {
+        text-align: left;
+    }
+    li {
+        margin-bottom: 5px;
+    }
+</style>

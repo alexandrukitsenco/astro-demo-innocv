@@ -1,0 +1,27 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import Number from '../components/Number.vue';
+---
+<head>
+  <title>hola mundo</title>
+  <meta charset="UTF-8">
+  <ViewTransitions />
+</head>
+<div>
+  <main>
+    <slot />
+  </main>
+  <footer>
+    <Number transition:persist client:load/>
+  </footer>
+</div>
+<style> 
+  footer {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+  }
+  body {
+    all: unset;
+  }
+</style>
