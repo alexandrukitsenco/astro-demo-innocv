@@ -2,5 +2,23 @@
 import EmptyLayout from '../layouts/EmptyLayout.astro'
 ---
 <EmptyLayout>
-  Hola Mundo desde pepe
+  <div class="responsiveContainer">
+    <h1>Bienvenido a Astro</h1>
+    <p>Introducción al desarrollo web con componentes Astro.</p>
+  </div>    
 </EmptyLayout>
+<style>
+  .responsiveContainer {
+    width: 100vw;  /* Ancho igual al ancho de la ventana del navegador */
+    height: 100vh; /* Alto igual al alto de la ventana del navegador */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #f0f0f0;
+    color: #333;
+    box-sizing: border-box;
+    padding: 20px;
+}
+</style>
