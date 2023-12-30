@@ -1,5 +1,5 @@
 <template>
-  <div class="number-page">
+  <div v-show="paginacion >= 0" class="number-page">
     {{ paginacion + 1 }}
   </div>
 </template>
@@ -8,23 +8,34 @@
 import { ref, onMounted, onUnmounted } from "vue";
 import { navigate } from "astro:transitions/client";
 
-const paginas = ref<string[]>(["/", "/portada", "/indice"]);
+const paginas = ref<string[]>(["/", "/indice", "/intro"]);
+const paginasRestringidas = ref<string[]>(["/", "/indice"]);
 const paginaActual = ref(0);
-const paginacion = ref(0);
+const paginacion = ref(-1);
 
-const navegar = (event: KeyboardEvent) => {
-  paginacion.value++;
-  if (event.key === "ArrowRight") {
-    paginaActual.value = (paginaActual.value + 1) % paginas.value.length;
-    navigate(paginas.value[paginaActual.value]);
-  } else if (event.key === "ArrowLeft") {
-    paginaActual.value = (paginaActual.value - 1 + paginas.value.length) % paginas.value.length;
-    navigate(paginas.value[paginaActual.value]);
+const manejarNavegacion = (event: string) => {
+  if (event === "ArrowRight" && paginaActual.value < paginas.value.length - 1) {
+    navegar(true);
+  } else if (event === "ArrowLeft" && paginaActual.value > 0) {
+    navegar(false);
   }
 };
 
+const navegar = (direction: boolean) => {
+  // true is right and false is left
+  if (direction) {
+    paginaActual.value++;
+  } else {
+    paginaActual.value--;
+  }
+  paginacion.value = paginaActual.value - 2;
+  navigate(paginas.value[paginaActual.value]);
+};
+
 const manejarKeyDown = (event: KeyboardEvent) => {
-  navegar(event);
+  if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+    manejarNavegacion(event.key);
+  }
 };
 
 onMounted(() => {
