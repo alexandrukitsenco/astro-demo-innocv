@@ -1,24 +1,19 @@
 ---
 import EmptyLayout from '../layouts/EmptyLayout.astro'
+import Slide from '../components/Slide.astro';
+import { Image } from 'astro:assets';
+import innocvLogo from '../../public/img/innocv-logo.svg'
+import astroLogo from '../../public/img/astro-logo-dark.svg'
 ---
 <EmptyLayout>
-  <div class="responsiveContainer">
-    <h1>Bienvenido a Astro</h1>
-    <p>Introducción al desarrollo web con componentes Astro.</p>
-  </div>    
+  <Slide hideImage={true}>
+    <div slot="content" class=" flex flex-col gap-5 relative" style="top: -60px;">
+      <div class=" w-full flex gap-7">
+        <Image src={innocvLogo} alt='innocv'/>
+        <Image src={astroLogo} alt='innocv'/>
+      </div>
+      <h1 class=" text-7xl"><b>Descubriendo Astro.js</b></h1>
+      <p class=" text-4xl">Construyendo Sitios Web Rápidos y Eficientes</p>
+    </div>
+  </Slide>  
 </EmptyLayout>
-<style>
-  .responsiveContainer {
-    width: 100vw;  /* Ancho igual al ancho de la ventana del navegador */
-    height: 100vh; /* Alto igual al alto de la ventana del navegador */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: #f0f0f0;
-    color: #333;
-    box-sizing: border-box;
-    padding: 20px;
-}
-</style>

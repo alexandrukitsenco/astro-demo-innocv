@@ -1,0 +1,17 @@
+---
+import Slide from "../components/Slide.astro";
+import EmptyLayout from "../layouts/EmptyLayout.astro";
+import { Image } from 'astro:assets';
+import astroComponent from '../../public/img/componente-astro.png'
+import estructruraProyecto from '../../public/img/estructura-proyecto.png'
+---
+
+<EmptyLayout>
+  <Slide>
+    <div slot="title">Desarrollo con Astro</div>
+    <div slot="content" class="flex gap-9">
+      <Image src={astroComponent} alt="componente astro" />
+      <Image src={estructruraProyecto} alt="estruct astro" />
+    </div>
+  </Slide>
+</EmptyLayout>

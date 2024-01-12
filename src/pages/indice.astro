@@ -1,50 +1,44 @@
 ---
 import EmptyLayout from "../layouts/EmptyLayout.astro";
+import Slide from "../components/Slide.astro";
 // Componente IndiceDiapositivas.astro
 const diapositivas = [
     "Introducción a Astro",
-    "Arquitectura de Astro",
-    "Componentes en Astro",
-    "Optimización de Rendimiento",
-    "SEO y Astro",
-    "Casos de Uso y Estudios de Caso",
-    "Recursos y Comunidad"
+    "Arquitectura y Principios Clave",
+    "Desarrollo con Astro",
+    "Casos de Uso y Ejemplos Prácticos",
+    "Comunidad y Ecosistema",
+    "Preguntas y Respuestas"
 ];
 ---
 
 <EmptyLayout>
-  <div class="diapositiva">
-    <h2>Índice de Diapositivas</h2>
-    <ol>
-        {diapositivas.map((diapositiva) => (
-            <li>{diapositiva}</li>
-        ))}
-    </ol>
-  </div>
+    <Slide>
+        <h2 slot="title">Índice</h2>
+        <ul slot="content">
+            {diapositivas.map((diapositiva, index) => (
+                <li>
+                    <div class=" mr-2">{diapositiva} </div>
+                    <div class="dotted"></div>
+                    <div class=" ml-2">{index + 1}</div>
+                </li>
+            ))}
+        </ul>
+    </Slide>
 </EmptyLayout>
 
 
 <style>
-    .diapositiva {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100vw;
-        height: 100vh;
-        font-family: Arial, sans-serif;
-        background-color: #f8f8f8;
-        color: #333;
-        padding: 20px;
-        box-sizing: border-box;
-    }
-    h2 {
-        margin-bottom: 20px;
-    }
-    ol {
-        text-align: left;
-    }
-    li {
-        margin-bottom: 5px;
-    }
+li {
+    margin-bottom: 20px;
+    display: flex;
+    width: 600px;
+    font-size: 20px;
+}
+.dotted {
+    flex-grow: 1;
+    border-bottom: 2px dotted;
+    position: relative;
+    top: -5px
+}
 </style>

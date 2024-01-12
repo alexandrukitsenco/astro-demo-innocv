@@ -1,0 +1,21 @@
+---
+import Slide from "../components/Slide.astro";
+import EmptyLayout from "../layouts/EmptyLayout.astro";
+import { Image } from 'astro:assets';
+import fluent from '../../public/img/Home-Fluent-2-Design-System.png'
+import cypress from '../../public/img/JavaScript-Component-Testing-and-E2E-Testing-Framework-Cypress.png'
+import idx from '../../public/img/Project-IDX.png'
+import firebase from '../../public/img/The-Firebase-Blog.png'
+---
+
+<EmptyLayout>
+  <Slide>
+    <div slot="title">Casos de Uso y Ejemplos Prácticos</div>
+    <div slot="content" class="flex justify-around flex-wrap w-5/6">
+      <Image src={fluent} alt="fluent" class=" w-2/5 mb-10"/>
+      <Image src={idx} alt="idx" class=" w-2/5 mb-10"/>
+      <Image src={firebase} alt="firebase" class=" w-2/5 mb-10"/>
+      <Image src={cypress} alt="cypress" class=" w-2/5 mb-10"/>
+    </div>
+  </Slide>
+</EmptyLayout>
