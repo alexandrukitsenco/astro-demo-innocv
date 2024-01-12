@@ -2,26 +2,43 @@
 import { ViewTransitions } from 'astro:transitions';
 import Number from '../components/Number.vue';
 ---
+
 <head>
   <title>hola mundo</title>
   <meta charset="UTF-8">
   <ViewTransitions />
 </head>
-<div>
-  <main>
-    <slot />
-  </main>
-  <footer>
-    <Number transition:persist client:load/>
-  </footer>
-</div>
+
+<body class="relative">
+  <div class="hidden lg:block">
+    <main>
+      <slot />
+    </main>
+    <footer class="absolute left-1/2 transform -translate-x-1/2">
+      <Number transition:persist client:load/>
+    </footer>
+  </div>
+  <div class=" flex lg:hidden text-center h-screen w-screen">
+    <div class=" m-auto text-7xl">Por favor, utiliza una pantalla más grande para una mejor experiencia.</div>
+  </div>
+</body>
+
 <style> 
-  footer {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-  }
   body {
     all: unset;
+  }
+
+  /* Estilo general del scrollbar */
+  html::-webkit-scrollbar {
+      width: 10px;
+  }
+
+  /* Estilo del track (pista) del scrollbar */
+  html::-webkit-scrollbar-track {
+      background: transparent;
+  }
+
+  footer {
+    top: 95vh;
   }
 </style>
