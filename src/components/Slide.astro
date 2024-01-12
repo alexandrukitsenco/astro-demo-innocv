@@ -1,16 +1,29 @@
 ---
 import { Image } from 'astro:assets';
 import astroLogo from '../../public/img/astro-icon-dark.svg'
+import innocvLogo from "../../public/img/innocv-logo.svg"
+import heartLogo from "../../public/img/plus.svg"
 ---
 
-<div class="slide">
-  <div class="header">
-    <Image src={astroLogo} alt="Descripción de la imagen" />
-    <slot name="title">Título por defecto</slot>
-  </div>
+<div class="slide relative">
+  {
+    Astro.slots.title &&
+    (
+    <div class="header">
+      <Image src={astroLogo} alt="Descripción de la imagen" />
+      <slot name="title"></slot>
+    </div>
+    )
+  }
   <div class="content">
     <slot name="content">Contenido por defecto</slot>
   </div>
+  {
+    !Astro.props.hideImage && (
+      <Image class="innocv" src={innocvLogo} alt="Descripción de la imagen" />
+    )
+  }
+  
 </div>
 
 <style>
@@ -19,7 +32,7 @@ import astroLogo from '../../public/img/astro-icon-dark.svg'
     flex-direction: column;
     align-items: center;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -28,15 +41,22 @@ import astroLogo from '../../public/img/astro-icon-dark.svg'
   .header {
     width: 100%;
     padding-top: 20px; /* Margen superior de 10px */
-    font-size: 40px;
+    font-size: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   .header img {
-    width: 50px;
+    height: 70px;
+    max-width: 130px;
     margin-right: 20px;
+  }
+
+  .innocv {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
   }
 
   .content {
