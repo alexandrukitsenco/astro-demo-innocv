@@ -8,8 +8,16 @@
 import { ref, onMounted, onUnmounted } from "vue";
 import { navigate } from "astro:transitions/client";
 
-const paginas = ref<string[]>(["/", "/indice", "/intro"]);
-const paginasRestringidas = ref<string[]>(["/", "/indice"]);
+const paginas = ref<string[]>([
+  "/",
+  "/indice",
+  "/intro",
+  "/arquitectura",
+  "/desarrollo",
+  "/case-use",
+  "/community",
+  "/preguntas",
+]);
 const paginaActual = ref(0);
 const paginacion = ref(-1);
 
