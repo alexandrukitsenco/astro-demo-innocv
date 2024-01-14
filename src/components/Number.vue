@@ -16,6 +16,7 @@ const paginas = ref<string[]>([
   "/desarrollo",
   "/case-use",
   "/community",
+  "/demo",
   "/preguntas",
 ]);
 const paginaActual = ref(0);

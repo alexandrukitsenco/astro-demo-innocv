@@ -1,0 +1,31 @@
+---
+// Componente CharacterCard.astro
+import type { Character } from "../model/character"
+
+// Propiedades recibidas por el componente
+interface Props {
+  character: Character;
+}
+
+const { character } = Astro.props as Props;
+---
+
+<a href={`/rick-and-morty/${character.id}`} class="block">
+  <div class="bg-white shadow-lg rounded-lg overflow-hidden md:flex max-w-screen-md mx-auto cursor-pointer">
+    <img class="h-auto w-full md:w-1/3 object-cover" src={character.image} alt={character.name} />
+    <div class="p-8">
+      <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{character.name}</div>
+      <div class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{character.status}</div>
+      <p class="mt-2 text-gray-600">{character.species} - {character.gender}</p>
+      <div class="mt-4">
+        <span class="font-bold">Origin:</span> <span class="text-blue-500 hover:text-blue-800">{character.origin.name}</span>
+      </div>
+      <div class="mt-2">
+        <span class="font-bold">Location:</span> <span class="text-blue-500 hover:text-blue-800">{character.location.name}</span>
+      </div>
+      <div class="mt-2">
+        <span class="font-bold">Created:</span> {new Date(character.created).toLocaleDateString()}
+      </div>
+    </div>
+  </div>
+</a>

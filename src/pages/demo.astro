@@ -1,0 +1,26 @@
+---
+import Slide from "../components/Slide.astro";
+import EmptyLayout from "../layouts/EmptyLayout.astro";
+import Character from "../components/Character.astro";
+
+const res = await fetch('https://rickandmortyapi.com/api/character');
+const { results: characters } = await res.json();
+---
+
+<EmptyLayout>
+  <Slide>
+    <div slot="title">Desarrollo con Astro</div>
+    <div slot="content" class="flex gap-9">
+      <div class=" text-7xl">Demo</div>
+    </div>
+  </Slide>
+  <div class=" w-full flex flex-wrap">
+    {
+      characters.map(character => (
+        <div class="w-full md:w-1/2 lg:w-1/3 p-2">
+          <Character character={character}/>
+        </div>
+      ))
+    }
+  </div>
+</EmptyLayout>
