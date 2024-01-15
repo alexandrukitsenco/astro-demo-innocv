@@ -9,8 +9,9 @@ const titulos = [
   "Importación de Componentes bajo Demanda",
   "Agnostico a los frameworks",
   "Renderizado en el Servidor (SSR)",
-  "Optimización Automática de Recursos",
   "Zero Client-side JavaScript por Defecto",
+  "Optimización Automática de Recursos",
+  "Integración nativa con View Transitions API",
   "Soporte para TypeScript",
   "Integración con Herramientas de Desarrollo"
 ];
@@ -19,13 +20,13 @@ const titulos = [
 <EmptyLayout>
   <Slide>
     <div slot="title">Arquitectura y Principios Clave</div>
-    <div slot="content" class=" w-5/6 h-4/6 flex gap-6 justify-center items-start">
+    <a slot="content" class=" w-5/6 h-4/6 flex gap-6 justify-center items-start cursor-default" href="https://docs.astro.build/es/concepts/why-astro/" target="_blank">
       <ul class=" w-1/3 flex flex-col gap-5 text-left">
         {titulos.map((titulo, index) => (
           <li>{index + 1}. {titulo}</li>
         ))}
       </ul>
       <Image src={astroIslands} alt="astro islands" class=" h-2/3 w-auto"/>
-    </div>
+    </a>
   </Slide>
 </EmptyLayout>
